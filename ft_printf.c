@@ -9,8 +9,9 @@
 /*   Updated: 2024/04/30 08:47:40 by omartela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
-#include "unistd.h"
+//#include "ft_printf.h"
+#include <unistd.h>
+#include <stdarg.h>
 
 void	ft_putchar_fd(char c, int fd)
 {
@@ -51,7 +52,7 @@ void	ft_putnbr_fd(int n, int fd)
 
 unsigned int	ft_print_char(const char *format, va_list args)
 {
-	int c;
+	int	c;
 
 	c = va_arg(args, int);
 	ft_putchar_fd(c, 1);
@@ -61,11 +62,11 @@ unsigned int	ft_print_char(const char *format, va_list args)
 
 unsigned int	ft_print_str(const char *format, va_list args)
 {
-	char *str;
-	unsigned count;
+	char			*str;
+	unsigned int	count;
 
 	count = 0;
-	str = va_arg(args, char*);
+	str = va_arg(args, char *);
 	ft_putstr_fd(str, 1);
 	while (*str)
 	{
@@ -125,7 +126,7 @@ void	ft_putunsnbr_fd(unsigned int n, int fd)
 
 unsigned int	ft_print_unsnbr(const char *format, va_list args)
 {
-	unsigned int unsnbr;
+	unsigned int	unsnbr;
 
 	unsnbr = va_arg(args, unsigned int);
 	ft_putunsnbr_fd(unsnbr, 1);
@@ -153,7 +154,7 @@ void	ft_puthexnbr_fd(unsigned int n, int fd, char formatter)
 
 unsigned int	count_hexnbr(unsigned int hexnbr)
 {
-	unsigned int count;
+	unsigned int	count;
 
 	count = 0;
 
@@ -169,7 +170,7 @@ unsigned int	count_hexnbr(unsigned int hexnbr)
 
 unsigned int	ft_print_hexadecimal(const char *format, va_list args, char formatter)
 {
-	unsigned int hexnbr;
+	unsigned int	hexnbr;
 
 	hexnbr = va_arg(args, unsigned int);
 	ft_puthexnbr_fd(hexnbr, 1, formatter);
@@ -178,7 +179,6 @@ unsigned int	ft_print_hexadecimal(const char *format, va_list args, char formatt
 
 void ft_putptr_fd(uintptr_t ptr, int fd)
 {
-	
 	if (ptr >= 16)
 	{
 		ft_putptr_fd(ptr / 16, fd);
@@ -195,7 +195,7 @@ void ft_putptr_fd(uintptr_t ptr, int fd)
 
 unsigned int	count_ptr(uintptr_t ptr)
 {
-	unsigned count;
+	unsigned int	count;
 
 	count = 0;
 	while (ptr != 0)
@@ -203,12 +203,12 @@ unsigned int	count_ptr(uintptr_t ptr)
 		ptr = ptr / 16;
 		++count;
 	}
-	return(count);
+	return (count);
 }
 
 unsigned int	ft_print_ptr(const char *format, va_list args)
 {
-	void *ptr;
+	void	*ptr;
 
 	ptr = va_arg(args, void *);
 	ft_putptr_fd((uintptr_t)ptr, 1);
@@ -239,8 +239,8 @@ unsigned int ft_format(const char *format, va_list args, unsigned count)
 
 int	ft_printf(const char *format, ...)
 {
-	va_list args;
-	int count;
+	va_list	args;
+	int		count;
 
 	count = 0;
 	va_start(args, format);
