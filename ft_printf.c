@@ -68,7 +68,10 @@ unsigned int	ft_print_str(const char *format, va_list args)
 	str = va_arg(args, char*);
 	ft_putstr_fd(str, 1);
 	while (*str)
+	{
 		++count;
+		++str;
+	}
 	return (count);
 }
 
@@ -113,13 +116,11 @@ unsigned int	count_unsdigit(unsigned int n)
 
 void	ft_putunsnbr_fd(unsigned int n, int fd)
 {
-	char	c;
-	if (n >= 0)
+	if (n >= 10)
 	{
 		ft_putunsnbr_fd(n / 10, fd);
 	}
-	c = n % 10 + '0';
-	write(fd, &c, 1);
+	ft_putchar_fd(n % 10 + '0', fd);
 }
 
 unsigned int	ft_print_unsnbr(const char *format, va_list args)
