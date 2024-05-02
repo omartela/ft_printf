@@ -6,11 +6,11 @@
 #    By: omartela <omartela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/01 15:46:36 by omartela          #+#    #+#              #
-#    Updated: 2024/05/01 17:05:51 by omartela         ###   ########.fr        #
+#    Updated: 2024/05/02 12:10:23 by omartela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ft_printf.a
+NAME = libftprintf.a
 
 SRC = ft_printf.c \
 	  ft_print_ptr.c \
