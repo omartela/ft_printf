@@ -13,7 +13,7 @@
 
 int	ft_puthexnbr_fd(unsigned int n, int fd, char format)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if (n >= 16)
@@ -24,13 +24,13 @@ int	ft_puthexnbr_fd(unsigned int n, int fd, char format)
 	else
 	{
 		if (n <= 9)
-			write(n % 16 + '0', fd);
+			write(1, n % 16 + '0', 1);
 		else
 		{
 			if (format == 'X')
-				count += write(n - 10 + 'A', fd);
+				count += write(1, n - 10 + 'A', 1);
 			if (format == 'x')
-				count += write(n - 10 + 'a', fd);
+				count += write(1, n - 10 + 'a', 1);
 		}
 	}
 	return (count);

@@ -13,7 +13,7 @@
 
 int	ft_putptr_fd(unsigned long ptr)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if (ptr >= 16)
@@ -24,9 +24,9 @@ int	ft_putptr_fd(unsigned long ptr)
 	else
 	{
 		if (ptr <= 9)
-			count += write(ptr % 16 + '0', 1);
+			count += write(1, ptr % 16 + '0', 1);
 		else
-			count += write(ptr - 10 + 'a', 1);
+			count += write(1, ptr - 10 + 'a', 1);
 	}
 	return (count);
 }
