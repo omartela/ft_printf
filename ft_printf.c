@@ -6,30 +6,35 @@
 /*   By: omartela <omartela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 08:47:40 by omartela          #+#    #+#             */
-/*   Updated: 2024/04/30 08:47:40 by omartela         ###   ########.fr       */
+/*   Updated: 2024/05/03 15:08:08 by omartela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-unsigned int	ft_format(const char *format, va_list args, unsigned int count)
+int	ft_format(const char *format, va_list args, unsigned int count)
 {
+	int rvalue;
+
+	rvalue = 0;
 	if (*format == 'c')
-		count += ft_print_char(args);
+		rvalue = ft_print_char(args);
 	else if (*format == 's')
-		count += ft_print_str(args);
+		rvalue = ft_print_str(args);
 	else if (*format == 'p')
-		count += ft_print_ptr(args);
+		rvalue = ft_print_ptr(args);
 	else if (*format == 'i' || *format == 'd')
-		count += ft_print_nbr(args);
+		rvalue = ft_print_nbr(args);
 	else if (*format == 'u')
-		count += ft_print_unsnbr(args);
+		rvalue = ft_print_unsnbr(args);
 	else if (*format == 'x' || *format == 'X')
-		count += ft_print_hexadecimal(args, *format);
+		rvalue = ft_print_hexadecimal(args, *format);
 	else if (*format == '%')
 	{
-		ft_putchar_fd('%', 1);
-		++count;
+		rvalue = write(1,'%', 1);
 	}
+	if (rvalue < 0)
+		return (rvalue);
+	count += rvalue;
 	return (count);
 }
 

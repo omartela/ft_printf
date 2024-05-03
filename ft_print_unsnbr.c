@@ -6,7 +6,7 @@
 /*   By: omartela <omartela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 16:13:08 by omartela          #+#    #+#             */
-/*   Updated: 2024/05/01 16:13:10 by omartela         ###   ########.fr       */
+/*   Updated: 2024/05/03 14:11:37 by omartela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -26,13 +26,17 @@ unsigned int	count_unsdigit(unsigned int n)
 	return (count);
 }
 
-void	ft_putunsnbr_fd(unsigned int n, int fd)
+int	ft_putunsnbr_fd(unsigned int n)
 {
+	int count;
+
+	count = 0;
 	if (n >= 10)
 	{
-		ft_putunsnbr_fd(n / 10, fd);
+		ft_putunsnbr_fd(n / 10);
 	}
-	ft_putchar_fd(n % 10 + '0', fd);
+	count += write(n % 10 + '0', 1);
+	return (count);
 }
 
 unsigned int	ft_print_unsnbr(va_list args)
@@ -40,6 +44,5 @@ unsigned int	ft_print_unsnbr(va_list args)
 	unsigned int	unsnbr;
 
 	unsnbr = va_arg(args, unsigned int);
-	ft_putunsnbr_fd(unsnbr, 1);
-	return (count_unsdigit(unsnbr));
+	return (ft_putunsnbr_fd(unsnbr));
 }
