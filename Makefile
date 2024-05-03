@@ -23,14 +23,15 @@ OBJS = $(SRC:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
-LIBFT_DIR = libft
+LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 INCLUDES = -I. -I$(LIBFT_DIR)
 
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-	$(AR) $(NAME) $(OBJS)
+	@ar x $(LIBFT)
+	$(AR) $(NAME) $(OBJS) *.o
 
 $(LIBFT):
 	@$(MAKE) -C $(LIBFT_DIR)
@@ -41,10 +42,12 @@ $(LIBFT):
 clean:
 	$(RM) $(OBJS)
 	@$(MAKE) -C $(LIBFT_DIR) clean
+	@rm -f *.o
 
 fclean: clean
 	$(RM) $(NAME)
 	@$(MAKE) -C $(LIBFT_DIR) fclean
+	@rm -f *.o
 
 re: fclean all
 
