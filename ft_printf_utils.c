@@ -6,7 +6,7 @@
 /*   By: omartela <omartela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 16:24:47 by omartela          #+#    #+#             */
-/*   Updated: 2024/05/07 17:12:09 by omartela         ###   ########.fr       */
+/*   Updated: 2024/05/07 17:38:18 by omartela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -31,17 +31,11 @@ int	ft_print_str(va_list args)
 	return (write(1, str, count));
 }
 
-int	ft_putnbr(int n, int *count)
+int	ft_putnbr(long n, int *count)
 {
 	char	c;
 
-	if (n == -2147483648)
-	{
-		if (write(1, "-2147483648", 11) == -1)
-			return (-1);
-		*count += 11;
-	}
-	else if (n < 0)
+	if (n < 0)
 	{
 		n = -1 * n;
 		if (write(1, "-", 1) == -1)
