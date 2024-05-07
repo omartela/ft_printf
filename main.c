@@ -6,7 +6,7 @@
 /*   By: omartela <omartela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 16:25:28 by omartela          #+#    #+#             */
-/*   Updated: 2024/05/01 16:25:30 by omartela         ###   ########.fr       */
+/*   Updated: 2024/05/07 18:02:40 by omartela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,19 @@ int main(void) {
     printf("Return value of ft_printf: %d\n", ret_ft_printf);
     printf("Return value of printf: %d\n", ret_printf);
 
+
+	 printf("##########################\n");
+	 ret_ft_printf = ft_printf("%%p: %p\n", NULL);
+	 ret_printf = printf("%%p: %p\n", NULL);
+	 printf("Return value of ft_printf: %d\n", ret_ft_printf);
+	 printf("Return value of printf: %d\n", ret_printf);
+
 	printf("##########################\n");
     ret_ft_printf = ft_printf("%%d: %d\n", d);
     ret_printf = printf("%%d: %d\n", d);
     printf("Return value of ft_printf: %d\n", ret_ft_printf);
     printf("Return value of printf: %d\n", ret_printf);
+
 
 	printf("##########################\n");
     ret_ft_printf = ft_printf("%%i: %i\n", i);
