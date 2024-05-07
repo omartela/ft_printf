@@ -6,40 +6,46 @@
 /*   By: omartela <omartela@student.hive.fi>          +#+  +:+       +#+      */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 16:10:14 by omartela          #+#    #+#             */
-/*   Updated: 2024/05/03 13:54:03 by omartela         ###   ########.fr       */
+/*   Updated: 2024/05/07 16:29:54 by omartela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	ft_puthexnbr_fd(unsigned int n, int fd, char format)
+int	ft_puthexnbr(unsigned int n, char f, int *cn)
 {
-	int	count;
+	char	c;
 
-	count = 0;
 	if (n >= 16)
 	{
-		ft_puthexnbr_fd(n / 16, fd, format);
-		ft_puthexnbr_fd(n % 16, fd, format);
+		if (ft_puthexnbr(n / 16, f, cn) == -1)
+			return (-1);
+		if (ft_puthexnbr(n % 16, f, cn) == -1)
+			return (-1);
 	}
 	else
 	{
 		if (n <= 9)
-			write(1, n % 16 + '0', 1);
+			c = n % 16 + '0';
 		else
-		{
-			if (format == 'X')
-				count += write(1, n - 10 + 'A', 1);
-			if (format == 'x')
-				count += write(1, n - 10 + 'a', 1);
-		}
+			c = n - 10 + f;
+		if (write(1, &c, 1) == -1)
+			return (-1);
+		else
+			*cn += 1;
 	}
-	return (count);
+	return (*cn);
 }
 
-unsigned int	ft_print_hexadecimal(va_list args, char format)
+int	ft_print_hexadecimal(va_list args, char format)
 {
 	unsigned int	hexnbr;
+	int				count;
 
+	count = 0;
 	hexnbr = va_arg(args, unsigned int);
-	return (ft_puthexnbr_fd(hexnbr, 1, format));
+	if (format == 'X')
+		format = 'A';
+	else
+		format = 'a';
+	return (ft_puthexnbr(hexnbr, format, &count));
 }

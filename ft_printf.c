@@ -6,14 +6,14 @@
 /*   By: omartela <omartela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 08:47:40 by omartela          #+#    #+#             */
-/*   Updated: 2024/05/03 16:17:26 by omartela         ###   ########.fr       */
+/*   Updated: 2024/05/07 16:50:37 by omartela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
 int	ft_format(const char *format, va_list args)
 {
-	int rvalue;
+	int	rvalue;
 
 	rvalue = 0;
 	if (*format == 'c')
@@ -29,8 +29,8 @@ int	ft_format(const char *format, va_list args)
 	else if (*format == 'x' || *format == 'X')
 		rvalue = ft_print_hexadecimal(args, *format);
 	else if (*format == '%')
-		rvalue = write(1,'%', 1);
-	return (rvalue)
+		rvalue = write(1, "%", 1);
+	return (rvalue);
 }
 
 int	ft_printf(const char *format, ...)
@@ -41,22 +41,20 @@ int	ft_printf(const char *format, ...)
 
 	count = 0;
 	va_start(args, format);
-
 	while (*format)
 	{
 		if (*format == '%')
 		{
-			rvalue = ft_format(++format, args, count);
-			if (rvalue < 0)
+			rvalue = ft_format(++format, args);
+			if (rvalue == -1)
 				return (-1);
 			count += rvalue;
 		}
 		else
 		{
-			rvalue = write(1, *format, 1);
-			if (rvalue < 0)
+			if (write(1, format, 1) == -1)
 				return (-1);
-			count += rvalue;
+			++count;
 		}
 		++format;
 	}

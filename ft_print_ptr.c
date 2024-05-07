@@ -3,38 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_ptr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omartela <omartela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omartela <omartela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/01 16:06:51 by omartela          #+#    #+#             */
-/*   Updated: 2024/05/03 14:06:56 by omartela         ###   ########.fr       */
+/*   Created: 2024/05/07 15:35:18 by omartela          #+#    #+#             */
+/*   Updated: 2024/05/07 16:54:42 by omartela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	ft_putptr_fd(unsigned long ptr)
+int	ft_putptr(unsigned long ptr, int *count)
 {
-	int	count;
+	char	c;
 
-	count = 0;
 	if (ptr >= 16)
 	{
-		ft_putptr_fd(ptr / 16);
-		ft_putptr_fd(ptr % 16);
+		if (ft_putptr(ptr / 16, count) == -1)
+			return (-1);
+		if (ft_putptr(ptr % 16, count) == -1)
+			return (-1);
 	}
 	else
 	{
 		if (ptr <= 9)
-			count += write(1, ptr % 16 + '0', 1);
+			c = ptr % 16 + '0';
 		else
-			count += write(1, ptr - 10 + 'a', 1);
+			c = ptr - 10 + 'a';
+		if (write(1, &c, 1) == -1)
+			return (-1);
+		else
+			*count += 1;
 	}
-	return (count);
+	return (*count);
 }
 
-unsigned int	ft_print_ptr(va_list args)
+int	ft_print_ptr(va_list args)
 {
 	void	*ptr;
+	int		count;
 
+	count = 0;
 	ptr = va_arg(args, void *);
-	return (ft_putptr_fd((unsigned long)ptr));
+	ft_putptr((unsigned long)ptr, &count);
+	return (count);
 }
