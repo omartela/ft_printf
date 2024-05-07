@@ -6,7 +6,7 @@
 /*   By: omartela <omartela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 16:24:47 by omartela          #+#    #+#             */
-/*   Updated: 2024/05/07 17:38:18 by omartela         ###   ########.fr       */
+/*   Updated: 2024/05/07 20:34:08 by omartela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -26,6 +26,8 @@ int	ft_print_str(va_list args)
 
 	count = 0;
 	str = va_arg(args, char *);
+	if (!str)
+		return (write(1, "(null)", 6));
 	while (str[count])
 		++count;
 	return (write(1, str, count));
