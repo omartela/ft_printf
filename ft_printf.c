@@ -6,7 +6,7 @@
 /*   By: omartela <omartela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 08:47:40 by omartela          #+#    #+#             */
-/*   Updated: 2024/05/07 16:50:37 by omartela         ###   ########.fr       */
+/*   Updated: 2024/05/08 15:42:15 by omartela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -56,6 +56,8 @@ int	ft_printf(const char *format, ...)
 				return (-1);
 			++count;
 		}
+		if (!*format)
+			return (0);	
 		++format;
 	}
 	va_end(args);
