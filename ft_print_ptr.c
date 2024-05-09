@@ -6,7 +6,7 @@
 /*   By: omartela <omartela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 15:35:18 by omartela          #+#    #+#             */
-/*   Updated: 2024/05/07 18:07:09 by omartela         ###   ########.fr       */
+/*   Updated: 2024/05/09 08:48:57 by omartela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -43,8 +43,6 @@ int	ft_print_ptr(va_list args)
 
 	count = 0;
 	ptr = va_arg(args, void *);
-	if (!ptr)
-		return (write(1, "(nil)", 5));
 	if (write(1, "0x", 2) == -1)
 		return (-1);
 	count += 2;
