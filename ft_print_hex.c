@@ -6,7 +6,7 @@
 /*   By: omartela <omartela@student.hive.fi>          +#+  +:+       +#+      */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 16:10:14 by omartela          #+#    #+#             */
-/*   Updated: 2024/05/10 12:12:27 by omartela         ###   ########.fr       */
+/*   Updated: 2024/05/10 12:26:21 by omartela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -25,7 +25,7 @@ static int	ft_puthexnbr(unsigned int n, char f, int *cn)
 	else
 	{
 		if (n <= 9)
-			c = n % 16 + '0';
+			c = n + '0';
 		else
 			c = n - 10 + f;
 		if (write(1, &c, 1) == -1)
