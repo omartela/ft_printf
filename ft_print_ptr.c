@@ -6,7 +6,7 @@
 /*   By: omartela <omartela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 15:35:18 by omartela          #+#    #+#             */
-/*   Updated: 2024/05/10 12:12:40 by omartela         ###   ########.fr       */
+/*   Updated: 2024/05/10 12:33:55 by omartela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -25,7 +25,7 @@ static int	ft_putptr(unsigned long ptr, int *count)
 	else
 	{
 		if (ptr <= 9)
-			c = ptr % 16 + '0';
+			c = ptr + '0';
 		else
 			c = ptr - 10 + 'a';
 		if (write(1, &c, 1) == -1)
