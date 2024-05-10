@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_hex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omartela <omartela@student.hive.fi>          +#+  +:+       +#+      */
+/*   By: omartela <omartela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/01 16:10:14 by omartela          #+#    #+#             */
-/*   Updated: 2024/05/10 12:26:21 by omartela         ###   ########.fr       */
+/*   Created: 2024/05/10 12:36:39 by omartela          #+#    #+#             */
+/*   Updated: 2024/05/10 12:39:51 by omartela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
