@@ -6,12 +6,12 @@
 /*   By: omartela <omartela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 15:35:18 by omartela          #+#    #+#             */
-/*   Updated: 2024/05/09 08:48:57 by omartela         ###   ########.fr       */
+/*   Updated: 2024/05/10 12:12:40 by omartela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	ft_putptr(unsigned long ptr, int *count)
+static int	ft_putptr(unsigned long ptr, int *count)
 {
 	char	c;
 

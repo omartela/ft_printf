@@ -6,7 +6,7 @@
 /*   By: omartela <omartela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 16:24:47 by omartela          #+#    #+#             */
-/*   Updated: 2024/05/07 20:34:08 by omartela         ###   ########.fr       */
+/*   Updated: 2024/05/10 12:13:57 by omartela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -33,7 +33,7 @@ int	ft_print_str(va_list args)
 	return (write(1, str, count));
 }
 
-int	ft_putnbr(long n, int *count)
+static int	ft_putnbr(long n, int *count)
 {
 	char	c;
 

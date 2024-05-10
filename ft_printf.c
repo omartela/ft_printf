@@ -6,12 +6,12 @@
 /*   By: omartela <omartela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 08:47:40 by omartela          #+#    #+#             */
-/*   Updated: 2024/05/08 15:42:15 by omartela         ###   ########.fr       */
+/*   Updated: 2024/05/10 12:21:16 by omartela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	ft_format(const char *format, va_list args)
+static int	ft_format(const char *format, va_list args)
 {
 	int	rvalue;
 
@@ -33,14 +33,12 @@ int	ft_format(const char *format, va_list args)
 	return (rvalue);
 }
 
-int	ft_printf(const char *format, ...)
+static int	ft_print_helper(const char *format, va_list args)
 {
-	va_list	args;
-	int		count;
-	int		rvalue;
+	int	count;
+	int	rvalue;
 
 	count = 0;
-	va_start(args, format);
 	while (*format)
 	{
 		if (*format == '%')
@@ -57,9 +55,20 @@ int	ft_printf(const char *format, ...)
 			++count;
 		}
 		if (!*format)
-			return (0);	
+			return (0);
 		++format;
 	}
+	return (count);
+}
+
+int	ft_printf(const char *format, ...)
+{
+	va_list	args;
+	int		count;
+
+	count = 0;
+	va_start(args, format);
+	count = ft_print_helper(format, args);
 	va_end(args);
 	return (count);
 }

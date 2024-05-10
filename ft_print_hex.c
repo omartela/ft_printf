@@ -6,12 +6,12 @@
 /*   By: omartela <omartela@student.hive.fi>          +#+  +:+       +#+      */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 16:10:14 by omartela          #+#    #+#             */
-/*   Updated: 2024/05/07 16:29:54 by omartela         ###   ########.fr       */
+/*   Updated: 2024/05/10 12:12:27 by omartela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	ft_puthexnbr(unsigned int n, char f, int *cn)
+static int	ft_puthexnbr(unsigned int n, char f, int *cn)
 {
 	char	c;
 

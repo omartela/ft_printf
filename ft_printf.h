@@ -6,7 +6,7 @@
 /*   By: omartela <omartela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 14:59:29 by omartela          #+#    #+#             */
-/*   Updated: 2024/05/07 17:38:40 by omartela         ###   ########.fr       */
+/*   Updated: 2024/05/10 12:19:59 by omartela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,9 @@
 
 int				ft_print_char(va_list args);
 int				ft_print_str(va_list args);
-int				ft_putnbr(long n, int *count);
-int				ft_putunsnbr(unsigned int n, int *count);
 int				ft_print_unsnbr(va_list args);
-int				ft_puthexnbr(unsigned int n, char f, int *cn);
 int				ft_print_hexadecimal(va_list args, char format);
-int				ft_putptr(unsigned long ptr, int *count);
 int				ft_print_ptr(va_list args);
-int				ft_format(const char *format, va_list args);
 int				ft_printf(const char *format, ...);
 int				ft_print_nbr(va_list args);
 

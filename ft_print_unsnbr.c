@@ -6,12 +6,12 @@
 /*   By: omartela <omartela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 16:13:08 by omartela          #+#    #+#             */
-/*   Updated: 2024/05/07 16:53:33 by omartela         ###   ########.fr       */
+/*   Updated: 2024/05/10 12:13:12 by omartela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	ft_putunsnbr(unsigned int n, int *count)
+static int	ft_putunsnbr(unsigned int n, int *count)
 {
 	char	c;
 
