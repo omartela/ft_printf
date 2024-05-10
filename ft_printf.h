@@ -6,14 +6,13 @@
 /*   By: omartela <omartela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 14:59:29 by omartela          #+#    #+#             */
-/*   Updated: 2024/05/10 12:19:59 by omartela         ###   ########.fr       */
+/*   Updated: 2024/05/10 12:28:58 by omartela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <stdint.h>
 # include <unistd.h>
 # include <stdarg.h>
 
