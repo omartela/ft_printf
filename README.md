@@ -167,7 +167,6 @@ The function handles various edge cases:
 
 This implementation follows:
 - 42 School Norm coding standards
-- C99 standard compatibility
 - POSIX compliance for system calls
 
 ## Author
